@@ -1,5 +1,5 @@
+import 'package:counter_bloc/bloc/States/bloc.dart';
 import 'package:counter_bloc/bloc/States/bloc_States.dart';
-import 'package:counter_bloc/bloc/bloc_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class _CounterScreenState extends State<CounterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    BlocCounter blocCounter = BlocProvider.of(context);
+    BlocApp blocApp = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -31,7 +31,7 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
         backgroundColor: Colors.teal,
       ),
-      body: BlocBuilder<BlocCounter, BlocState>(
+      body: BlocBuilder<BlocApp, BlocState>(
         builder: (context, state) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -46,7 +46,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   child: IconButton(
                     padding: const EdgeInsets.all(16),
                     onPressed: () {
-                      blocCounter.incrementCounter();
+                      blocApp.incrementCounter();
                     },
                     icon: const Icon(
                       Icons.add,
@@ -55,7 +55,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                 ),
                 Text(
-                  '${blocCounter.counter}',
+                  '${blocApp.counter}',
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   child: IconButton(
                     padding: const EdgeInsets.all(16),
                     onPressed: () {
-                      blocCounter.decrementCounter();
+                      blocApp.decrementCounter();
                     },
                     icon: const Icon(
                       Icons.remove_outlined,
